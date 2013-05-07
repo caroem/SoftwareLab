@@ -16,8 +16,8 @@ Schreiben Sie eine Funktion die das Low Byte (Bits 0-7) und
 das High Byte (Bits 8-15) vertauscht.
 Z.B. aus der Zahl 0x4020 wird die Zahl 0x2040.
 */
-
 short int switchLowHighByte(short int i) {
+
     
     short int cLow, cHigh;
     
@@ -25,8 +25,14 @@ short int switchLowHighByte(short int i) {
     cHigh = i >> 8;
     
     i = cLow | cHigh;
+    
+    printf("Die getauschte Zahl ist %x", i);
+    
+    
+    getchar();
+    return 0;
+    
 
-  return 1;
 }
 
 
@@ -58,9 +64,9 @@ des enums Numbers sollen in das High Byte gepackt werden.
 
 
 void serialize(Status s, Numbers n, short int* data) {
-    short int n = n << 8;
-    n = n | s;
-    *data = n;
+    short int number = n << 8;
+    number = number | s;
+    *data = number;
 }
 
 /**
@@ -76,7 +82,7 @@ verpackt wurden.
 */
 
 void deserialize(short int data, Status* s, Numbers* n) {
-    short int s = data >> 8;
+    Status stat = data >> 8;
 }
 
 
@@ -85,7 +91,7 @@ int main() {
     
     //Eingabe Zahl,
     printf("Hex Zahl:");
-    scanf("%x", &i);
+    scanf("%hx", &i);
     switchLowHighByte(i);
     
     serialize(Start, Fifteen, &komplett);
