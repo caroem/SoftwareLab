@@ -81,5 +81,16 @@ void deserialize(short int data, Status* s, Numbers* n) {
 
 
 int main() {
-  // Ihre Testroutinen
+    short int i, komplett;
+    
+    //Eingabe Zahl,
+    printf("Hex Zahl:");
+    scanf("%x", &i);
+    switchLowHighByte(i);
+    
+    serialize(Start, Fifteen, &komplett);
+    printf("\n Serialize %x \n", komplett);
+    
+    getchar();
+    return 0;
 }
