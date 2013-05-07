@@ -18,9 +18,13 @@ Z.B. aus der Zahl 0x4020 wird die Zahl 0x2040.
 */
 
 short int switchLowHighByte(short int i) {
-
-    unsigned short input = 0x1234;
-    unsigned short output = ((input & 0xff) << 8) | ((input >> 8) & 0xff)
+    
+    short int cLow, cHigh;
+    
+    cLow = i << 8;
+    cHigh = i >> 8;
+    
+    i = cLow | cHigh;
 
   return 1;
 }
@@ -54,7 +58,9 @@ des enums Numbers sollen in das High Byte gepackt werden.
 
 
 void serialize(Status s, Numbers n, short int* data) {
-    *data = (n << ) + s;
+    short int n = n << 8;
+    n = n | s;
+    *data = n;
 }
 
 /**
@@ -70,7 +76,7 @@ verpackt wurden.
 */
 
 void deserialize(short int data, Status* s, Numbers* n) {
-  // Ihre Loesung
+    short int s = data >> 8;
 }
 
 
